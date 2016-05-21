@@ -1,0 +1,104 @@
+---
+layout: bootstrap
+---
+<!-- La la la just some text so we trigger a rebuild of GHP -->
+<!-- Main Content -->
+<section id="intro">
+  <div class="container">
+      <!--<div class="row header-row">
+          <div class="col-lg-12 text-center">
+              <h1 id="jabberwocky">GovHack | <i>Project Jabberwocky</i></h1>
+          </div>
+      </div>-->
+      <div class="row">
+          <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+            <p><img src="http://www.scienceimage.csiro.au/images/cache/detail/739_0_AR1391.jpg" width="40%" align="left" style="padding: 15px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut lorem vel orci eleifend pretium. Mauris eu leo feugiat, eleifend odio et, blandit ex. Sed eget odio iaculis, maximus purus vitae, mollis tortor. Integer at justo justo. Sed pharetra dictum dui, ut dapibus massa dignissim et. Pellentesque malesuada mi eu nibh facilisis facilisis. Nam euismod nunc id sapien hendrerit lobortis. Nam vitae bibendum lectus, semper consectetur magna. Suspendisse accumsan tristique nibh, at rhoncus tempus at.</p>
+            <p>Duis ac diam eu diam ullamcorper porttitor aliquet eu elit. Aliquam maximus aliquam justo, eget ornare dolor molestie in. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>Nunc vitae ultrices odio, quis interdum orci. Maecenas accumsan aliquam tortor. Cras in accumsan nunc. Aenean facilisis bibendum purus. Aliquam nec turpis diam. Etiam quam enim, vehicula vel dolor sed, porta tristique nulla. Suspendisse est mauris, iaculis sit amet condimentum eu, gravida id nisi. Quisque ac orci sit amet lorem placerat mollis. Mauris congue quam nec odio laoreet ullamcorper. Nulla sed varius dui. Nulla posuere placerat risus. Suspendisse ac felis ac mauris ultricies porttitor.</p>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <!-- 16:9 aspect ratio -->
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe src="https://player.vimeo.com/video/132280958?title=0&byline=0&portrait=0" class="embed-responsive-item" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+          </div>
+          
+        </div>
+      </div>
+  </div>
+</section>
+
+<!-- Portfolio Grid Section -->
+<section id="portfolio" class="bg-light-gray">
+    <div class="container">
+        <div class="row header-row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading" id="themes">Themes</h2>
+                <h3 class="section-subheading text-muted">A few themes to get you started</h3>
+            </div>
+        </div>
+        <div class="row">
+            {% assign theme_ids = "" %}
+            {% for theme in site.themes %}
+              {% if theme.jurisdiction == "australia" %}
+                {% assign theme_ids = theme_ids | append: theme.id %}
+                {% assign theme_ids = theme_ids | append: "," %}
+              {% endif %}
+            {% endfor %}
+            
+            {% unless theme_ids == "" %}
+              {% assign theme_ids_list = theme_ids | split: "," %}
+              {% include theme_cards.bs.html theme_ids=theme_ids_list %}
+            {% endunless %}
+        </div>
+        <div class="row">
+          <h3 class="section-subheading text-muted">We also have some state-specific themes to help you out...</h3>
+          
+          {% include jurisdictions_bar.bs.html section="prizes" %}
+        </div>
+    </div>
+</section>
+
+<!-- Need More Info Section -->
+<section id="portfolio">
+    <div class="container">
+        <div class="row header-row">
+          <div class="col-lg-12 text-center">
+              <h2 class="section-heading" id="more-info">Need more information?</h2>
+          </div>
+        </div>
+        <div class="row">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut lorem vel orci eleifend pretium. Mauris eu leo feugiat, eleifend odio et, blandit ex. Sed eget odio iaculis, maximus purus vitae, mollis tortor. Integer at justo justo. Sed pharetra dictum dui, ut dapibus massa dignissim et. Pellentesque malesuada mi eu nibh facilisis facilisis. Nam euismod nunc id sapien hendrerit lobortis. Nam vitae bibendum lectus, semper consectetur magna. Suspendisse accumsan tristique nibh, at rhoncus nisl tempus at.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Mentors Section -->
+<section id="portfolio" class="bg-light-gray">
+    <div class="container">
+        <div class="row header-row">
+          <div class="col-lg-12 text-center">
+              <h2 class="section-heading" id="mentors">Mentors</h2>
+          </div>
+        </div>
+        <div class="row">
+          {% assign mentors_by_org = site.mentors | group_by:"organisation" %}
+          {% include mentor_card_by_organisation.bs.html mentors_by_org=mentors_by_org %}
+        </div>
+    </div>
+</section>
+
+<!-- Organisations Section -->
+<section id="portfolio">
+    <div class="container header-row">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+              <h2 class="section-heading" id="organisations">Organisations</h2>
+          </div>
+        </div>
+        <div class="row">
+          {% include organisation_cards.bs.html %}
+        </div>
+    </div>
+</section>

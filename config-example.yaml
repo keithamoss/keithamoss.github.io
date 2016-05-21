@@ -1,0 +1,38 @@
+site:
+  year: 2016
+  prizes:
+    enabled: false
+  event-list:
+    map-enabled: true
+    
+
+attributes:
+  name:
+    type: string
+    filterable: true
+    filter_config:
+      type: text_search
+  events:
+    type: array
+    filterable: true
+    filter_config:
+      type: choice
+      default: {{site.year}}
+  status:
+    type: string
+    filterable: true
+    filter_config:
+      type: choice
+    
+    
+    
+name: Mentor 1
+id: mentor_1
+photo_url: /resources/jess-150x150.png
+title: Science Ninja
+ask_me_about: Stuff and things.
+organisation: organisation_1
+jurisdiction: wa
+location: perth
+    
+    
